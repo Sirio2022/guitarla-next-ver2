@@ -12,14 +12,16 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={`contenedor ${styles.barra}`}>
-        <Image
-          className={styles.logo}
-          src="/img/logo.svg"
-          alt="logo"
-          width={200}
-          height={200}
-          priority="false"
-        />
+        <Link href="/">
+          <Image
+            className={styles.logo}
+            src="/img/logo.svg"
+            alt="logo"
+            width={200}
+            height={200}
+            priority="false"
+          />
+        </Link>
 
         <nav className={styles.navegacion}>
           <Link href="/" className={router === '/' ? styles.active : ''}>
