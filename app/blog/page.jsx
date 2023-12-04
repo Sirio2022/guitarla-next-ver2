@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import LayoutPrincipal from '@/components/layoutPrincipal/layoutPrincipal';
 
-export default function Nosotros() {
+export default function Blog() {
   return (
     <>
       <LayoutPrincipal>
-        <h1>Nosotros</h1>
+        <h1>Blog</h1>
       </LayoutPrincipal>
     </>
   );

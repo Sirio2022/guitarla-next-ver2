@@ -7,7 +7,6 @@ export default function Home() {
     <>
       <LayoutPrincipal>
         <h1>Home</h1>
-        <Link href="/nosotros">Nosotros</Link>
       </LayoutPrincipal>
     </>
   );
