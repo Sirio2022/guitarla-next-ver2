@@ -1,3 +1,14 @@
+import Link from 'next/link';
+
+import LayoutPrincipal from '../components/layoutPrincipal/layout';
+
 export default function Home() {
-  return <h1>Hello desde Next</h1>;
+  return (
+    <>
+      <LayoutPrincipal>
+        <h1>Home</h1>
+        <Link href="/nosotros">Nosotros</Link>
+      </LayoutPrincipal>
+    </>
+  );
 }
