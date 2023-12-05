@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import LayoutPrincipal from '@/components/layoutPrincipal/layoutPrincipal';
 
 export default function Home() {
