@@ -1,19 +1,28 @@
 .guitarra {
-  display: flex;
-  flex-direction: column;
   background-color: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  margin: 0 auto;
 
   img {
+    display: block;
+    width: auto;
+    height: auto;
     margin: 0 auto;
   }
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
+  }
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 1rem;
+    align-items: center;
+    max-width: 70rem;
+    margin: 0 auto;
   }
 }
 
@@ -48,7 +57,7 @@
   background-color: black;
   color: var(--white);
   padding: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 0.5rem;
