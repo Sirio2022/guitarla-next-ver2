@@ -11,7 +11,7 @@ async function getData() {
     `${process.env.API_URL}/guitarras?populate=imagen`,
     {
       next: {
-        revalidate: 3600,
+        revalidate: 1,
       },
     }
   );
@@ -49,7 +49,6 @@ export default async function Home() {
   const data = await getData();
   const { urlGuitarraData, urlPostData, urlCursoData } = data;
   const curso = urlCursoData.data.attributes;
-  
 
   return (
     <>

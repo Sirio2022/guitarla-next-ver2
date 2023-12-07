@@ -43,9 +43,13 @@ export default async function Post({ params: { url } }) {
         <Image
           src={imagen?.data?.attributes.url}
           alt={`Imagen del post ${titulo}`}
-          className={`${styles.imgen}`}
+          className={`${styles.imagen}`}
           width={600}
           height={200}
+          style={{
+            width: 'auto',
+            height: 'auto',
+          }}
         />
         <div className={`${styles.contenido}`}>
           <h3>{titulo}</h3>
