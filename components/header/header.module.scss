@@ -16,6 +16,7 @@
   .navegacion {
     margin-top: 5rem;
     display: flex;
+    align-items: center;
 
     a {
       color: var(--white);
@@ -45,6 +46,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  
 
   @media (min-width: 768px) {
     flex-direction: row;
