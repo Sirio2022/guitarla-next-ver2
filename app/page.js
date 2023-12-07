@@ -42,31 +42,28 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
   const { urlGuitarraData, urlPostData } = data;
-  console.log(urlGuitarraData.data, urlPostData.data);
 
   return (
     <>
       <LayoutPrincipal>
-       <main className='contenedor'>
-        <h1 className='heading'>Nuestra Colección</h1>
+        <main className="contenedor">
+          <h1 className="heading">Nuestra Colección</h1>
 
-        <div className={styles.guitarras_grid}>
-          {urlGuitarraData.data.map((guitarra) => (
-            <Guitarra key={guitarra.id} guitarra={guitarra.attributes} />
-          ))}
-        </div>
-
+          <div className={styles.guitarras_grid}>
+            {urlGuitarraData.data.map((guitarra) => (
+              <Guitarra key={guitarra.id} guitarra={guitarra.attributes} />
+            ))}
+          </div>
         </main>
 
-        <section className='contenedor'>
-          <h1 className='heading'>Nuestro Blog</h1>
+        <section className="contenedor">
+          <h1 className="heading">Nuestro Blog</h1>
 
           <div className={stylesPost.posts_grid}>
-          {urlPostData.data.map((post) => (
-            <Post key={post.id} post={post.attributes} />
-          ))}
-        </div>
-
+            {urlPostData.data.map((post) => (
+              <Post key={post.id} post={post.attributes} />
+            ))}
+          </div>
         </section>
       </LayoutPrincipal>
     </>

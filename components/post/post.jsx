@@ -22,6 +22,10 @@ export default function Post({ post }) {
         alt={`Imagen de ${titulo}`}
         width={600}
         height={200}
+        style={{
+          width: 'auto',
+          height: 'auto',
+        }}
       />
 
       <div className={styles.contenido}>
