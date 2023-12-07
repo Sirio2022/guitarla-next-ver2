@@ -2,7 +2,9 @@ import Guitarra from '@/components/guitarra/guitarra';
 import LayoutPrincipal from '@/components/layoutPrincipal/layoutPrincipal';
 import styles from '@/app/tienda/tienda.module.scss';
 import Post from '@/components/post/post';
+import Curso from '@/components/curso/curso';
 import stylesPost from '@/app/blog/blog.module.scss';
+import { notFound } from 'next/navigation';
 
 async function getData() {
   const urlGuitarra = await fetch(
@@ -20,28 +22,34 @@ async function getData() {
     },
   });
 
-  if (!urlGuitarra.ok || !urlPost.ok) {
-    return {
-      props: {
-        errorCode: urlGuitarra.status,
-      },
-    };
+  const urlCurso = await fetch(`${process.env.API_URL}/curso?populate=imagen`, {
+    next: {
+      revalidate: 1,
+    },
+  });
+
+  if (!urlGuitarra.ok || !urlPost.ok || !urlCurso.ok) {
+    return notFound();
   }
 
-  const [urlGuitarraData, urlPostData] = await Promise.all([
+  const [urlGuitarraData, urlPostData, urlCursoData] = await Promise.all([
     urlGuitarra.json(),
     urlPost.json(),
+    urlCurso.json(),
   ]);
 
   return {
     urlGuitarraData,
     urlPostData,
+    urlCursoData,
   };
 }
 
 export default async function Home() {
   const data = await getData();
-  const { urlGuitarraData, urlPostData } = data;
+  const { urlGuitarraData, urlPostData, urlCursoData } = data;
+  const curso = urlCursoData.data.attributes;
+  
 
   return (
     <>
@@ -55,6 +63,8 @@ export default async function Home() {
             ))}
           </div>
         </main>
+
+        <Curso curso={curso} />
 
         <section className="contenedor">
           <h1 className="heading">Nuestro Blog</h1>

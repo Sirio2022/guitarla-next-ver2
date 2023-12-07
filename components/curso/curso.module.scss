@@ -1,0 +1,23 @@
+.curso {
+  margin-top: 10rem;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  @media (min-width: 768px) {
+  }
+  .curso_grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .contenido {
+    grid-column: 2 / 3;
+  }
+
+  .texto {
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--white);
+  }
+}
