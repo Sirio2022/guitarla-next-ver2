@@ -5,7 +5,7 @@ import styles from './blog.module.scss';
 async function getPosts() {
   const res = await fetch(`${process.env.API_URL}/posts?populate=imagen`, {
     next: {
-      revalidate: 3600,
+      revalidate: 1,
     },
   });
 

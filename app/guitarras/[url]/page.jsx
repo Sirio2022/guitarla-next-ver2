@@ -8,7 +8,7 @@ async function getGuitarra({ url }) {
     `${process.env.API_URL}/guitarras?filters[url]=${url}&populate=imagen`,
     {
       next: {
-        revalidate: 1,
+        revalidate: 3600,
       },
     }
   );
