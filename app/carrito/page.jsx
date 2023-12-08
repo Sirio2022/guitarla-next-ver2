@@ -5,11 +5,13 @@ import { useContext, useEffect, useState } from 'react';
 import AppContext from '../../context/index.jsx';
 import styles from './carrito.module.scss';
 import Image from 'next/image.js';
+import Swal from 'sweetalert2';
 
 export default function Carrito() {
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
-  const { carritoLS, actualizarCantidad } = useContext(AppContext);
+  const { carritoLS, actualizarCantidad, eliminarGuitarra } =
+    useContext(AppContext);
 
   useEffect(() => {
     const carritoLocal = localStorage.getItem('carrito');
@@ -31,6 +33,22 @@ export default function Carrito() {
     );
     setTotal(total);
   }, [carrito]);
+
+  const handleClick = (id) => () => {
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: 'Una vez eliminado no podras recuperarlo',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        eliminarGuitarra(id);
+        Swal.fire('Eliminado!', 'Tu producto ha sido eliminado', 'success');
+      }
+    });
+  };
 
   return (
     <LayoutPrincipal>
@@ -55,7 +73,7 @@ export default function Carrito() {
                           width: 'auto',
                           height: 'auto',
                         }}
-                        priority={true}
+                        priority={false}
                       />
                     </div>
 
@@ -89,6 +107,14 @@ export default function Carrito() {
                         Subtotal: <span>$ {item.cantidad * item.precio}</span>
                       </p>
                     </div>
+
+                    <button
+                      className={styles.btn_eliminar}
+                      type="button"
+                      onClick={handleClick(item.id)}
+                    >
+                      X
+                    </button>
                   </div>
                 ))}
           </div>
@@ -98,8 +124,6 @@ export default function Carrito() {
             <p>
               Total a pagar: <span>$ {total}</span>
             </p>
-
-
           </aside>
         </div>
       </main>
