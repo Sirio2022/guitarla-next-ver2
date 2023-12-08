@@ -1,20 +1,80 @@
 .contenido {
-    display: grid ; 
-    align-items: start;
-    gap: 5rem;
+  display: grid;
+  align-items: start;
+  gap: 5rem;
 
-    @media (min-width: 768px) {
-        grid-template-columns: 3fr 2fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .carrito {
+    padding: 3rem 0;
+  }
+
+  .resumen {
+    background-color: #eaeaea;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    position: sticky;
+    top: 4rem;
+
+    span {
+        color: black;
+      font-weight: 900;
     }
 
-    .carrito{
-        padding: 3rem 0;
+    p {
+        color: blue;
+        text-transform: uppercase;
+        font-weight: 700;
     }
 
-    .resumen {
-        background-color: #eaeaea;
-        padding: 1rem 2rem ;
-        border-radius: 1rem;
-    }
+   
+  } 
+}
 
+.producto {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid #eaeaea;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  p {
+    margin: 0 0 1rem 0;
+  }
+
+  span {
+    font-weight: 900;
+  }
+
+  .select {
+    all: unset;
+    border: 1px solid #c3c3c3;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    width: 18%;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #e8e7e7;
+  }
+
+  .precio {
+    margin-top: 2rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .subtotal {
+    font-weight: 700;
+    font-size: 2.2rem;
+  }
 }
